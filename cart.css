@@ -6,6 +6,7 @@
 
 body{
     background-color: aliceblue;
+    overflow: hidden;
 }
 
 .container{
@@ -20,7 +21,6 @@ body{
     width: 100vw;
     background-color: bisque;
     position: relative; 
-
 }
 
 .cc{
@@ -28,14 +28,14 @@ body{
     right: 0%;
     position: relative;
     position: absolute;
-    /* background-color: gold; */
+    background-color: aqua;
     height: 8vh;
     width: 5%;
     cursor: pointer;   
 }
 
 .plus{
-    width: 20px;
+    width: 40%;
     height: 20px;
     top: 20%;
     right: 20%;
@@ -47,26 +47,37 @@ body{
     visibility: hidden;
 }
 
-/* .cc.showafter::after{
-    visibility: visible;
-} */
-
-.cart-area{
+.cart-area {
     position: absolute;
     top: 8vh;
-    right: 0%;
+    right: 0;
     height: 90vh;
-    background-color: aqua;
-
-    width: 30%;
-    /* visibility: hidden; */
+    width: 0;
+    background-color: white;
     z-index: 1;
-    transition: all 1s;
-
+    
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+
+    transition: width 0.5s ease-in-out, 
+                opacity 0.3s ease-in-out 0.2s, 
+                transform 0.5s ease-in-out;
 }
+
+.cart-area:hover, .cc:hover ~ .cart-area {
+    width: 30%;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+}
+
 
 .cart-items{
     display: flex;
@@ -78,10 +89,12 @@ body{
     background-color: azure;
     border-radius: 10px;
     border: 3px solid black;
+
 }
 
 .cart-items > img{
     height: 100%;
+    width: 25%;
     border-radius: 10px;
 }
 
@@ -124,14 +137,6 @@ body{
 /* .nav:has(.cart-area:hover){
     background-color: aquamarine;
 } */
-
-.cc:hover ~ .cart-area{
-    width: 30%;
-}
-
-.cart-area:hover{
-    width: 30%;
-}
 
 .item-wrap{
     display: flex;
