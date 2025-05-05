@@ -11,6 +11,7 @@ let iprice = document.querySelectorAll(".iprice");
 let inc = document.querySelectorAll(".inc");
 let dec = document.querySelectorAll(".dec");
 let no = document.querySelectorAll(".no");
+let gtotal = document.querySelector(".gtotal")
 
 
 let scount = 0;
@@ -36,10 +37,14 @@ function updateplus(){
 
 // For first item.
 
+let fprice = 0;
+
 function updateprice(){
     let pricetext = iprice[0].textContent.replace(/[^\d.]/g, ""); //removes any symbols.
     let price = parseFloat(pricetext); //coverts it into number.
-    rup[0].textContent = ` ₹ ${price * ncount}`;
+    fprice = price * ncount;
+    rup[0].textContent = ` ₹ ${fprice}`;
+    total();
 };
 
 let ncount = 0;
@@ -71,10 +76,14 @@ dec[0].addEventListener("click", ()=>{
 
 // For second item
 
+let fprice1 = 0;
+
 function updateprice1(){
     let pricetext = iprice[1].textContent.replace(/[^\d.]/g, ""); //removes any symbols.
     let price = parseFloat(pricetext); //coverts it into number.
-    rup[1].textContent = ` ₹ ${price * ncount1}`;
+    fprice1 = price * ncount1;
+    rup[1].textContent = ` ₹ ${fprice1}`;
+    total();
 };
 
 let ncount1 = 0;
@@ -107,10 +116,14 @@ dec[1].addEventListener("click", ()=>{
 
 //  For third Item.
 
+let fprice2 = 0;
+
 function updateprice2(){
     let pricetext = iprice[2].textContent.replace(/[^\d.]/g, ""); //removes any symbols.
     let price = parseFloat(pricetext); //coverts it into number.
-    rup[2].textContent = ` ₹ ${price * ncount2}`;
+    fprice2 = price * ncount2;
+    rup[2].textContent = ` ₹ ${fprice2}`;
+    total();
 };
 
 let ncount2 = 0;
@@ -139,3 +152,9 @@ dec[2].addEventListener("click", ()=>{
     spancount(-1);
     };
 });
+
+
+function total(){
+    let total = fprice+fprice1+fprice2;
+    gtotal.textContent = `₹${total}`;
+}
